@@ -5,11 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
-
 var db = require('./modules/database');
-db.connect('mongodb://localhost/addressbook');
-
 var routes = require('./routes/index');
+
+db.connect('mongodb://localhost/addressbook');
 
 var app = express();
 
