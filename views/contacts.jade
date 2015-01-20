@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  div(class='container')
+    h1 Address Book
+    div(class='user-logout-float')
+      div(class='username-left') User: #{username}
+      div(class='logout-right')
+        a(href='/logout') Logout
+    ul(data-role='listview')
+      each contact in contacts
+        li
+          a(href='/contact?id=#{contact._id}') #{contact.name}
+      div(class='add-contact')
+        a(href='/add_contact') Add new contact

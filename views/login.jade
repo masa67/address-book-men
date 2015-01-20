@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  div(class='container')
+    form(name='login', action='/login', method='post', data-ajax='false')
+      h2 Login Addressbook
+      label Username
+      input(type='text', name='username')
+      br
+      label Password
+      input(type='password', name='password')
+      br
+      input(type='submit', value='Login')
+    if (error)
+      p(class='alert') Error: #{error}
+    p Not Registered yet?
+    a(href='/register') Register here

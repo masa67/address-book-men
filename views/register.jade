@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  div(class='container')
+    form(name='register', action='/register', method='post', data-ajax='false')
+      h2 Register
+      label Username *
+      input(type='text', name='username', value='#{username}')
+      br
+      label Password *
+      input(type='password', name='password')
+      br
+      label Email address *
+      input(type='text', name='email', value='#{email}')
+      p * = Mandatory
+      br
+      input(type='submit', value='Register')
+      if (error)
+          p(class='alert') Error: #{error}
