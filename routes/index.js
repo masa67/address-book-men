@@ -36,6 +36,10 @@ router.get('/contacts', function(req, res) {
     }
 });
 
+router.delete('/delete_contact', function(req, res) {
+    db.delContact(req, res);
+});
+
 router.get('/login', function(req, res) {
     if (!req.session.username)
         res.render('login', {});

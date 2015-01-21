@@ -50,7 +50,16 @@ var abook = {
         })
     },
     clickContactDelete: function() {
-
+        $.ajax({
+            type: 'DELETE',
+            url: '/delete_contact',
+            data: {
+                id: $('#id').val()
+            },
+            success: function(data) {
+                abook.renderBody(data);
+            }
+        });
     },
     clickContactShow: function(id) {
         $.ajax({

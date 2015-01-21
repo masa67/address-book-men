@@ -149,6 +149,22 @@ exports.addContact = function(req,res){
     }
 };
 
+exports.delContact = function(req, res) {
+    Address.findById(req.body.id, function(err, data) {
+        if (err || data.owner !== req.session.username) {
+            res.render('error', { error: 'Cannot delete user.'});
+        } else {
+            data.remove(function(err) {
+                if (err) {
+                    res.render('error', { error: 'DB update fails.'});
+                } else {
+                    exports.getContacts(req, res);
+                }
+            });
+        }
+    });
+};
+
 exports.updContact = function(req, res) {
     Address.findById(req.body.id, function(err, data) {
         if (err || data.owner !== req.session.username) {
