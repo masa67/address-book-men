@@ -5,25 +5,25 @@ block content
     else
       h1 Update contact
     form(data-ajax='false')
-      input(type='hidden', name='id', value='#{id}')
+      input(id='id' type='hidden' name='id' value='#{id}')
       label Name *
-      input(type='text', name='name', value='#{name}')
+      input(id='name' type='text' name='name' value='#{name}')
       br
       label Address
-      input(type='text', name='address', value='#{address}')
+      input(id='address' type='text' name='address' value='#{address}')
       br
       label E-mail
-      input(type='text', name='email', value='#{email}')
+      input(id='email' type='text' name='email' value='#{email}')
       br
       label Phone
-      input(type='text', name='phone', value='#{phone}')
+      input(id='phone' type='text' name='phone' value='#{phone}')
       br
       label Birthday
-      input(type='date', name='birthday', value='#{birthday}')
+      input(id='birthday' type='date' name='birthday' value='#{birthday}')
       br
       label Other information
       br
-      textarea(name='otherInfo', , value='#{otherInfo}')
+      textarea(id='otherInfo' name='otherInfo' value='#{otherInfo}')
       br
       p * = Mandatory
       if (error)

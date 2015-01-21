@@ -14,7 +14,22 @@ var abook = {
         })
     },
     clickContactAdd: function() {
-
+        $.ajax({
+            type: 'POST',
+            url: '/add_contact',
+            data: {
+                id: $('#id').val(),
+                name: $('#name').val(),
+                address: $('#address').val() ,
+                email: $('email').val(),
+                phone: $('phone').val(),
+                birthday: $('birthday').val(),
+                otherInfo: $('otherInfo').val()
+            },
+            success: function(data) {
+                abook.renderBody(data);
+            }
+        })
     },
     clickContactCancel: function() {
         $.ajax({
