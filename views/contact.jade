@@ -1,13 +1,10 @@
-extends layout
-
 block content
   div(class='container')
-    a(href='/logout') Logout
-    if (action == '/add_contact')
+    if (action == 'add')
       h1 New contact
     else
       h1 Update contact
-    form(action='#[action}', method='post', data-ajax='false')
+    form(data-ajax='false')
       input(type='hidden', name='id', value='#{id}')
       label Name *
       input(type='text', name='name', value='#{name}')
@@ -31,9 +28,9 @@ block content
       p * = Mandatory
       if (error)
         p(class="alert") #{error)
-      if (action == '/add_contact')
-        input(type='submit', value='Add')
-      else
-        input(type='submit', value='Update')
-      a(class='no-link', href='/contacts')
-        input(type='button', value='Cancel')
+    if (action == 'add')
+      button(onclick='abook.clickContactAdd()') Add Contact
+    else
+      button(onclick='abook.clickContactUpdate()') Update Contact
+      button(onclick='abook.clickContactDelete()') Delete Contact
+    button(onclick='abook.clickContactCancel()') Cancel

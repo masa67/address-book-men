@@ -20,23 +20,9 @@ a {
 .alert {
   color: #f00;
 }
-.display-control .container {
-  display: none;
+.highlight {
+  color: #008000;
 }
-.ui-mobile-viewport.display-control .container {
-  display: block;
-}
-.logout-right {
-  display: inline-block;
-  float: right;
-}
-.no-link {
-  text-decoration: none;
-}
-.user-logout-float {
-  height: 50px;
-}
-.username-left {
-  display: inline-block;
-  float: left;
+.username {
+  margin-bottom: 20px;
 }

@@ -1,16 +1,16 @@
-extends layout
-
 block content
   div(class='container')
-    form(name='login', action='/login', method='post', data-ajax='false')
-      h2 Addressbook Demo
+    form(data-ajax='false')
+      h2 Contacts Demo
+      if (msg)
+        p(class='highlight') #{msg}
       label Username
-      input(type='text', name='username')
+      input(id='username' type='text' name='username')
       br
       label Password
-      input(type='password', name='password')
+      input(id='password' type='password' name='password')
       br
-      input(type='submit', value='Login')
+    button(onclick='abook.clickLogin()') Login
     if (error)
       p(class='alert') Error: #{error}
     p Not Registered yet?
