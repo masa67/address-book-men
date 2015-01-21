@@ -5,16 +5,30 @@ body {
 a {
   color: #00b7ff;
 }
+.add-contact {
+  margin-top: 20px;
+}
 .container {
   border: 1px solid #808080;
   border-radius: 4px;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 30px;
   padding: 30px;
   width: 300px;
 }
 .alert {
   color: #f00;
+}
+.display-control .container {
+  display: none;
+}
+.ui-mobile-viewport.display-control .container {
+  display: block;
+}
+.logout-right {
+  display: inline-block;
+  float: right;
 }
 .no-link {
   text-decoration: none;
@@ -25,11 +39,4 @@ a {
 .username-left {
   display: inline-block;
   float: left;
-}
-.logout-right {
-  display: inline-block;
-  float: right;
-}
-.add-contact {
-  margin-top: 20px;
 }

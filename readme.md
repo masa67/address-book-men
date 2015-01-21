@@ -9,6 +9,7 @@
 * Translate the API to a REST one.
 * Handling of birthday.
 * Meaning of `data-ajax` in Jade forms?
+* Option to add an image of a contact.
 
 # Versions
 

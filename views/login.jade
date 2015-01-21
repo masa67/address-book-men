@@ -3,7 +3,7 @@ extends layout
 block content
   div(class='container')
     form(name='login', action='/login', method='post', data-ajax='false')
-      h2 Login Addressbook
+      h2 Addressbook Demo
       label Username
       input(type='text', name='username')
       br
@@ -14,4 +14,4 @@ block content
     if (error)
       p(class='alert') Error: #{error}
     p Not Registered yet?
-    a(href='/register') Register here
+    button(onclick='abook.clickRegister()') Register here
