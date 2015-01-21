@@ -138,7 +138,7 @@ exports.addContact = function(req,res){
                     address:  req.body.address ? req.body.address : '' ,
                     email: req.body.email ? req.body.email : '',
                     phone: req.body.phone ? req.body.phone : '',
-                    birthday: req.body.birthday ? req.body.birthday : '',
+                    birthday: req.body.birthday ? new Date(req.body.birthday) : '',
                     otherInfo: req.body.otherInfo ? req.body.otherInfo : '',
                     error: 'Could not save contact in database.'
                 });
@@ -154,17 +154,28 @@ exports.updContact = function(req, res) {
         if (err || data.owner !== req.session.username) {
             res.render('error', { error: 'Cannot update user.'});
         } else {
-            data.name = req.body.name,
-            data.address = req.body.address,
-            data.email = req.body.email,
-            data.phone = req.body.phone,
-            data.birthday = req.body.birthday,
-            data.otherInfo = req.body.otherInfo
+            data.name = req.body.name;
+            data.address = req.body.address ? req.body.address : '';
+            data.email = req.body.email ? req.body.email : '';
+            data.phone = req.body.phone ? req.body.phone : '';
+            data.birthday = req.body.birthday ? new Date(req.body.birthday) : '';
+            data.otherInfo = req.body.otherInfo ? req.body.otherInfo : '';
             data.save(function(err) {
                 if (err) {
                     res.render('error', { error: 'DB update fails.'});
                 } else {
-                    exports.getContacts(req, res);
+                    res.render('contact',{
+                        action: 'update',
+                        id: req.query.id,
+                        name: data.name,
+                        address:  data.address,
+                        email: data.email,
+                        phone: data.phone,
+                        birthday: data.birthday ? data.birthday : '',
+                        otherInfo: data.otherInfo,
+                        msg: 'Saved.'
+                    });
+
                 }
             });
         }
@@ -177,13 +188,13 @@ exports.getContact = function(req, res) {
             res.render('error', { error: 'Cannot find user.'});
         } else {
             res.render('contact',{
-                action: '/update_contact',
+                action: 'update',
                 id: req.query.id,
                 name: data.name,
                 address:  data.address,
                 email: data.email,
                 phone: data.phone,
-                birthday: data.birthday,
+                birthday: data.birthday ? data.birthday : '',
                 otherInfo: data.otherInfo
             });
         }

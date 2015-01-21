@@ -31,6 +31,15 @@ var abook = {
             }
         })
     },
+    clickContactBack: function() {
+        $.ajax({
+            type: 'GET',
+            url: '/contacts',
+            success: function(data) {
+                abook.renderBody(data);
+            }
+        })
+    },
     clickContactCancel: function() {
         $.ajax({
             type: 'GET',
@@ -43,8 +52,35 @@ var abook = {
     clickContactDelete: function() {
 
     },
+    clickContactShow: function(id) {
+        $.ajax({
+            type: 'GET',
+            url: '/contact',
+            data: {
+                id: id
+            },
+            success: function(data) {
+                abook.renderBody(data);
+            }
+        })
+    },
     clickContactUpdate: function() {
-
+        $.ajax({
+            type: 'POST',
+            url: '/update_contact',
+            data: {
+                id: $('#id').val(),
+                name: $('#name').val(),
+                address: $('#address').val() ,
+                email: $('email').val(),
+                phone: $('phone').val(),
+                birthday: $('birthday').val(),
+                otherInfo: $('otherInfo').val()
+            },
+            success: function(data) {
+                abook.renderBody(data);
+            }
+        })
     },
     clickLogin: function() {
         $.ajax({

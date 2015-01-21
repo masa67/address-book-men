@@ -23,6 +23,15 @@ a {
 .highlight {
   color: #008000;
 }
+.msgbox {
+  height: 30px;
+}
+.msgbox .highlight {
+  float: left;
+}
+.msgbox .back {
+  float: right;
+}
 .username {
   margin-bottom: 20px;
 }

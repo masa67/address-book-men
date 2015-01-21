@@ -60,7 +60,7 @@ router.post('/register', function(req, res) {
     db.registerUser(req, res);
 });
 
-router.get('/update_contact', function(req, res) {
+router.post('/update_contact', function(req, res) {
     db.updContact(req, res);
 })
 

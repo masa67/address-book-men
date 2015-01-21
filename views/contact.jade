@@ -5,6 +5,11 @@ block content
     else
       h1 Update contact
     form(data-ajax='false')
+      if (msg)
+        div(class='msgbox')
+          div(class='highlight') #{msg}
+          div(class='back')
+            a(onclick='abook.clickContactBack()') Back
       input(id='id' type='hidden' name='id' value='#{id}')
       label Name *
       input(id='name' type='text' name='name' value='#{name}')
