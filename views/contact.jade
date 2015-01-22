@@ -9,7 +9,7 @@ block content
         div(class='msgbox')
           div(class='highlight') #{msg}
           div(class='back')
-            a(onclick='abook.clickContactBack()') Back
+            a(id='button-contact-back') Back
       input(id='id' type='hidden' name='id' value='#{id}')
       label Name *
       input(id='name' type='text' name='name' value='#{name}')
@@ -34,8 +34,8 @@ block content
       if (error)
         p(class="alert") #{error)
     if (action == 'add')
-      button(onclick='abook.clickContactAdd()') Add Contact
+      button(id='button-contact-add') Add Contact
     else
-      button(onclick='abook.clickContactUpdate()') Update Contact
-      button(onclick='abook.clickContactDelete()') Delete Contact
-    button(onclick='abook.clickContactCancel()') Cancel
+      button(id='button-contact-update') Update Contact
+      button(id='button-contact-delete') Delete Contact
+    button(id='button-contact-cancel') Cancel

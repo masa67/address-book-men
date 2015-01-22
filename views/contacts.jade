@@ -6,5 +6,5 @@ block content
       each contact in contacts
         li
           a(onclick="abook.clickContactShow('#{contact._id}')") #{contact.name}
-    button(onclick='abook.clickAddContact()') Add New Contact
-    button(onclick='abook.clickLogout()') Logout
+    button(id='button-contact-add-new') Add New Contact
+    button(id='button-logout') Logout

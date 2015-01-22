@@ -10,8 +10,8 @@ block content
       label Password
       input(id='password' type='password' name='password')
       br
-    button(onclick='abook.clickLogin()') Login
+    button(id='button-login') Login
     if (error)
       p(class='alert') Error: #{error}
     p Not Registered yet?
-    button(onclick='abook.clickRegister()') Register here
+    button(id='button-register') Register here

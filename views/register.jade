@@ -12,7 +12,7 @@ block content
       input(id='email', type='text', name='email', value='#{email}')
       p * = Mandatory
       br
-    button(onclick='abook.clickRegisterForm()') Register
-    button(onclick='abook.clickRegisterCancel()') Cancel
+    button(id='button-register-form') Register
+    button(id='button-register-cancel') Cancel
     if (error)
       p(class='alert') Error: #{error}
