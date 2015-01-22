@@ -8,7 +8,7 @@ router.get('/', function(req, res) {
     res.render('layout', {});
 });
 
-router.get('/add_contact', function(req, res) {
+router.get('/contact_new', function(req, res) {
     res.render('contact', {
         action: 'add',
         name: '',
@@ -20,12 +20,20 @@ router.get('/add_contact', function(req, res) {
     });
 });
 
-router.post('/add_contact', function(req, res) {
+router.get('/contact', function(req, res) {
+    db.getContact(req, res);
+});
+
+router.post('/contact', function(req, res) {
     db.addContact(req, res);
 });
 
-router.get('/contact', function(req, res) {
-    db.getContact(req, res);
+router.put('/contact', function(req, res) {
+    db.updContact(req, res);
+});
+
+router.delete('/contact', function(req, res) {
+    db.delContact(req, res);
 });
 
 router.get('/contacts', function(req, res) {
@@ -34,10 +42,6 @@ router.get('/contacts', function(req, res) {
     } else {
         res.render('login', {});
     }
-});
-
-router.delete('/delete_contact', function(req, res) {
-    db.delContact(req, res);
 });
 
 router.get('/login', function(req, res) {
@@ -56,16 +60,12 @@ router.get('/logout', function(req, res) {
     res.render('login', { msg: 'Thank You for using Contacts!'});
 })
 
-router.get('/register', function(req, res) {
+router.get('/owner_new', function(req, res) {
     res.render('register', { username: '', email: ''});
 });
 
-router.post('/register', function(req, res) {
+router.post('/owner', function(req, res) {
     db.registerUser(req, res);
 });
-
-router.post('/update_contact', function(req, res) {
-    db.updContact(req, res);
-})
 
 module.exports = router;

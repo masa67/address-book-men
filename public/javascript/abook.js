@@ -18,10 +18,19 @@ var abook = {
         })
     },
     registerListeners: function() {
+        $('#button-contact-add-new').click(function() {
+            $.ajax({
+                type: 'GET',
+                url: '/contact_new',
+                success: function(data) {
+                    abook.renderBody(data);
+                }
+            });
+        });
         $('#button-contact-add').click(function() {
             $.ajax({
                 type: 'POST',
-                url: '/add_contact',
+                url: '/contact',
                 data: {
                     id: $('#id').val(),
                     name: $('#name').val(),
@@ -36,16 +45,36 @@ var abook = {
                 }
             });
         });
-        $('#button-contact-add-new').click(function() {
+        $('#button-contact-update').click(function() {
             $.ajax({
-                type: 'GET',
-                url: '/add_contact',
+                type: 'PUT',
+                url: '/contact',
+                data: {
+                    id: $('#id').val(),
+                    name: $('#name').val(),
+                    address: $('#address').val() ,
+                    email: $('email').val(),
+                    phone: $('phone').val(),
+                    birthday: $('birthday').val(),
+                    otherInfo: $('otherInfo').val()
+                },
                 success: function(data) {
                     abook.renderBody(data);
                 }
             });
         });
-        $('#button-contact-back').click(function() {
+        $('#button-contact-delete').click(function() {
+            $.ajax({
+                type: 'DELETE',
+                url: '/contact',
+                data: {
+                    id: $('#id').val()
+                },
+                success: function(data) {
+                    abook.renderBody(data);
+                }
+            });
+        });$('#button-contact-back').click(function() {
             $.ajax({
                 type: 'GET',
                 url: '/contacts',
@@ -56,41 +85,8 @@ var abook = {
         });
         $('#button-contact-cancel').click(function() {
             $.ajax({
-                type: 'DELETE',
-                url: '/delete_contact',
-                data: {
-                    id: $('#id').val()
-                },
-                success: function(data) {
-                    abook.renderBody(data);
-                }
-            });
-        });
-        $('#button-contact-delete').click(function() {
-            $.ajax({
-                type: 'DELETE',
-                url: '/delete_contact',
-                data: {
-                    id: $('#id').val()
-                },
-                success: function(data) {
-                    abook.renderBody(data);
-                }
-            });
-        });
-        $('#button-contact-update').click(function() {
-            $.ajax({
-                type: 'POST',
-                url: '/update_contact',
-                data: {
-                    id: $('#id').val(),
-                    name: $('#name').val(),
-                    address: $('#address').val() ,
-                    email: $('email').val(),
-                    phone: $('phone').val(),
-                    birthday: $('birthday').val(),
-                    otherInfo: $('otherInfo').val()
-                },
+                type: 'GET',
+                url: '/contacts',
                 success: function(data) {
                     abook.renderBody(data);
                 }
@@ -121,7 +117,7 @@ var abook = {
         $('#button-register').click(function() {
             $.ajax({
                 type: 'GET',
-                url: '/register',
+                url: '/owner_new',
                 success: function(data) {
                     abook.renderBody(data);
                 }
@@ -139,7 +135,7 @@ var abook = {
         $('#button-register-form').click(function() {
             $.ajax({
                 type: 'POST',
-                url: '/register',
+                url: '/owner',
                 data: {
                     username: $('#username').val(),
                     password: $('#password').val(),
